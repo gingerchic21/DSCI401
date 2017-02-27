@@ -1,2 +1,2 @@
-# DSCI401
-Code for DSCI 401
+# DSCI 401
+This repository holds code examples and snippets from DSCI 401
