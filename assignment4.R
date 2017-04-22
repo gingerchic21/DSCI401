@@ -13,11 +13,11 @@ plot(money.data$yrs.service, money.data$salary, col=5 + (money.data$sex=="Female
      ylab="Salary",
      main="Years Service vs. Salary with Regards to Sex")
 # Add a legend
-legend("topright", lty=1, col=5:6, pch=c(16, 16), legend=c("Male", "Female"))
+legend("topright", lty=1, col=c(6,5), pch=c(16, 16), legend=c("Female", "Male"))
+# Add trend line for women
+abline(lm(salary~yrs.service, data=subset(money.data, sex=="Female")), col=6, lwd=2)
 # Add trend line for men
 abline(lm(salary~yrs.service, data=subset(money.data, sex=="Male")), col="blue", lwd=2)
-# Add trend line for women
-abline(lm(salary~yrs.service, data=subset(money.data, sex=="Female")), col="red", lwd=2)
 
 
 # 2) Relative to salary, what are typical times in terms of years of service for each rank?
@@ -47,13 +47,27 @@ legend("topright", lty=1, col=4:6, pch=c(16, 16, 16), legend=c("Assistant",
                                                                "Associate", "Prof"))
 
 # Table with average times of service per rank
-avg <- aggregate(yrs.service~rank, money.data, FUN=mean, na.rm=TRUE)
-print(avg)
+avg1 <- aggregate(yrs.service~rank, money.data, FUN=mean, na.rm=TRUE)
+print(avg1)
 
 
 # 3)	What general relationship exists between discipline and salary as time of
 # service progresses?
 
+plot(money.data$yrs.service, money.data$salary, col=5 + (money.data$discipline=="A"),
+     xlab="Years Service", 
+     ylab="Salary",
+     main="Years Service vs. Salary with Regards to Discipline")
+# Add a legend
+legend("topright", lty=1, col=c(6,5), pch=c(16, 16), legend=c("A", "B"))
+# Add trend line for discipline A
+abline(lm(salary~yrs.service, data=subset(money.data, discipline=="A")), col=6, lwd=2)
+# Add trend line for discipline B
+abline(lm(salary~yrs.service, data=subset(money.data, discipline=="B")), col="blue", lwd=2)
+
+# Table with average times of service per discipline
+avg3 <- aggregate(yrs.service~discipline, money.data, FUN=mean, na.rm=TRUE)
+print(avg3)
 
 
 dframe("log price") <- log(dframe$price)
