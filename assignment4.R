@@ -70,4 +70,15 @@ avg3 <- aggregate(yrs.service~discipline, money.data, FUN=mean, na.rm=TRUE)
 print(avg3)
 
 
+# Problem 2
+
+library(MASS)
+data(Boston)
+?Boston # Boston documentation
+Boston
+head(Boston)
+summary(Boston)
+plot(Boston)
+
+
 dframe("log price") <- log(dframe$price)
