@@ -80,5 +80,38 @@ head(Boston)
 summary(Boston)
 plot(Boston)
 
+plot(Boston$dis, Boston$nox, col=5 + (Boston$medv<=20),
+     xlab="Weighted Mean of Distances to 5 Boston Employment Centers", 
+     ylab="NO2 Concentration (Parts Per 10 Million)",
+     main="NO2 Concentration vs. Distances to Empolyment Centers
+     with Regards to Median House Prices")
+# Add a legend
+legend("topright", lty=1, col=c(6,5), pch=c(16, 16), legend=c("Less than or Equal To $20,000",
+                                                              "Greater than $20,000"))
+# Add trend line
+abline(lm(nox~dis, data=subset(Boston)), col="red", lwd=2)
 
-dframe("log price") <- log(dframe$price)
+
+plot(Boston$medv, Boston$lstat, col=5 + (Boston$rm<=6),
+     xlab="Median House Prices", 
+     ylab="Percent of Lower Status of Population",
+     main="Median House Prices vs. Percent of Lower Status of Population
+     with Regards to Number of Rooms")
+# Add a legend
+legend("topright", lty=1, col=c(6,5), pch=c(16, 16), legend=c("Less than or Equal To 6",
+                                                              "Greater than 6"))
+# Add trend line
+abline(lm(lstat~medv, data=subset(Boston)), col="red", lwd=2)
+
+
+plot(Boston$dis, Boston$lstat, col="blue",
+     xlab="Weighted Mean of Distances to 5 Boston Employment Centers", 
+     ylab="Percent of Lower Status of Population",
+     main="Weighted Mean of Distances to 5 Boston Employment Centers \
+     vs. Percent of Lower Status of Population")
+# Add trend line
+abline(lm(lstat~dis, data=subset(Boston)), col="red", lwd=2)
+
+
+
+# dframe("log price") <- log(dframe$price)
