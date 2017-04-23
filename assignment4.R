@@ -83,7 +83,7 @@ plot(Boston)
 plot(Boston$dis, Boston$nox, col=5 + (Boston$medv<=20),
      xlab="Weighted Mean of Distances to 5 Boston Employment Centers", 
      ylab="NO2 Concentration (Parts Per 10 Million)",
-     main="NO2 Concentration vs. Distances to Empolyment Centers
+     main="NO2 Concentration vs. Distances to Employment Centers
      with Regards to Median House Prices")
 # Add a legend
 legend("topright", lty=1, col=c(6,5), pch=c(16, 16), legend=c("Less than or Equal To $20,000",
@@ -107,11 +107,19 @@ abline(lm(lstat~medv, data=subset(Boston)), col="red", lwd=2)
 plot(Boston$dis, Boston$lstat, col="blue",
      xlab="Weighted Mean of Distances to 5 Boston Employment Centers", 
      ylab="Percent of Lower Status of Population",
-     main="Weighted Mean of Distances to 5 Boston Employment Centers \
+     main="Weighted Mean of Distances to 5 Boston Employment Centers 
      vs. Percent of Lower Status of Population")
 # Add trend line
 abline(lm(lstat~dis, data=subset(Boston)), col="red", lwd=2)
 
+head(mtcars)
+plot(Boston)
+data(mtcars)
+require(graphics)
+subs <- mtcars[c(1,3,4,5,6,7,9)] # Subset of columns related to MPG
+
+pairs(Boston)
+pairs(Boston, panel=panel.smooth) # Add a trend line
 
 
 # dframe("log price") <- log(dframe$price)
